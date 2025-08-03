@@ -8,6 +8,10 @@
     "resolveJsonModule": true,
     "moduleDetection": "force",
     "isolatedModules": true,
+    "outDir": "./lib/cjs/",
+    "sourceMap": true,
+    "declaration": true,
+    "noImplicitAny": true,
 
     /* Strictness */
     "strict": true,
@@ -38,5 +42,5 @@
     "**/*.js",
     ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist", "lib"]
 }
