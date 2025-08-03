@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import data from '../data/xpValues.json';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button'; // changing to tailwind eventually
+import TextField from '@mui/material/TextField'; // changing to tailwind eventually
 
 const Calculator = () => {
     const [totalXp, setTotalXp] = useState(0);
@@ -12,8 +11,33 @@ const Calculator = () => {
     const [characterLevel, setCharacterLevel] = useState(1);
     const [currentXp, setCurrentXp] = useState(0);
     const [newXp, setNewXp] = useState(0);
-    const [xpValues] = useState(data.xpValues);
+    const [xpValues] = useState(data.xpValues); // move to api
     const [showDetails, setShowDetails] = useState(false);
+
+    const setValue = (valueContext, value) => {
+        // valueContext is a string value that determines which action to fire
+        switch(valueContext) {
+            case 'totalXp':
+                setTotalXp(value);
+                break;
+            case 'characterName':
+                setCharacterName(value);
+                break;
+            case 'characterLevel':
+                setCharacterLevel(value);
+                break;
+            case 'currentXp':
+                setCurrentXp(value);
+                break;
+            case 'nextLevel':
+                setNextLevel(value);
+            case 'newXp':
+                setNewXp(value);
+                break;
+            default:
+                break;
+        }
+    };
 
     useEffect(() => {
         if(currentXp !== 0) {
@@ -71,9 +95,9 @@ const Calculator = () => {
         <section>
             <div className="content_wrap">
             <form>
-                <TextField id="charName" className="inputs" fullWidth={true} label="Character Name" required />
-                <TextField id="charLevel" className="inputs" fullWidth={true} label="Character Level" required />
-                <TextField id="currXp" className="inputs" fullWidth={true} label="Current XP" required />
+                <TextField id="charName" className="inputs" fullWidth={true} label="Character Name" value={characterName} />
+                <TextField id="charLevel" className="inputs" fullWidth={true} label="Character Level" value={characterLevel} />
+                <TextField id="currXp" className="inputs" fullWidth={true} label="Current XP" value={currentXp} />
                 <TextField id="newXp" className="inputs" fullWidth={true} label="Newly Earned XP" required />
                 <div className="button_container">
                     <Button type="submit" id="submit" onClick={() => handleCalc()}>Compute</Button>

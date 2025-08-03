@@ -11,19 +11,6 @@ const StateProvider = ({ children }: any) => {
 
     const initialState: IState = {
         searchInput: '',
-        songs: [],
-        artistDetails: {},
-        currentSong: {},
-        totalArtists: [],
-        togglePlayer: false,
-        toggleSearchResults: false,
-        toggleProfile: false,
-        toggleSearchResultsView: false,
-        toggleSidebar: false,
-        songIndex: null,
-        displayNoTracksMessage: true,
-        showErrorView: false,
-        token: ''
     }
 
     const [state, dispatch] = useReducer(stateReducer, initialState);
